@@ -15,7 +15,7 @@ import javax.validation.Valid
 
 @Validated
 @Controller("/api/cliente/{identificador}")
-class RegistraController(
+class ChavePixController(
     @Inject val grpcClient: KeyManagerGrpcServiceGrpc.KeyManagerGrpcServiceBlockingStub
 ) {
 
@@ -29,29 +29,10 @@ class RegistraController(
             .setTipoConta(chavePix.tipoConta)
             .build()
 
-        try {
-            val response = grpcClient.registraChavePix(request)
+        val response = grpcClient.registraChavePix(request)
 
-            val uri = HttpResponse.uri("/api/cliente/$identificador/chave-pix/${response.pixId}")
-            return HttpResponse.created( uri )
-
-        } catch (e: StatusRuntimeException) {
-
-            val description = e.status.description
-            val statusCode = e.status.code
-
-            if (statusCode == Status.Code.INVALID_ARGUMENT)
-                return HttpResponse.badRequest(description)
-
-            if (statusCode == Status.Code.ALREADY_EXISTS)
-                return HttpResponse.unprocessableEntity<Any?>().body(description)
-
-            if (statusCode == Status.Code.NOT_FOUND)
-                return HttpResponse.notFound(description)
-
-            return HttpResponse.serverError(e.message)
-
-        }
+        val uri = HttpResponse.uri("/api/cliente/$identificador/chave-pix/${response.pixId}")
+        return HttpResponse.created( uri )
 
     }
 
