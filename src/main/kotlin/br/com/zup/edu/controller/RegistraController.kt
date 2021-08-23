@@ -2,7 +2,7 @@ package br.com.zup.edu.controller
 
 import br.com.zup.edu.ChavePixRequest
 import br.com.zup.edu.KeyManagerGrpcServiceGrpc
-import br.com.zup.edu.model.ChavePixDTO
+import br.com.zup.edu.dto.ChavePixDTO
 import io.grpc.Status
 import io.grpc.StatusRuntimeException
 import io.micronaut.http.HttpResponse

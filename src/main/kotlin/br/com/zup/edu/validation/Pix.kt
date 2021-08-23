@@ -1,7 +1,7 @@
 package br.com.zup.edu.validation
 
 import br.com.zup.edu.TipoChave
-import br.com.zup.edu.model.ChavePixDTO
+import br.com.zup.edu.dto.ChavePixDTO
 import io.micronaut.core.annotation.AnnotationValue
 import io.micronaut.validation.validator.constraints.ConstraintValidator
 import io.micronaut.validation.validator.constraints.ConstraintValidatorContext

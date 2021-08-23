@@ -1,4 +1,4 @@
-package br.com.zup.edu.model
+package br.com.zup.edu.dto
 
 import br.com.zup.edu.TipoChave
 import br.com.zup.edu.TipoConta
