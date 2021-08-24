@@ -1,6 +1,7 @@
 package br.com.zup.edu.controller
 
 import br.com.zup.edu.ChavePixRequest
+import br.com.zup.edu.ClienteRequest
 import br.com.zup.edu.IdPixRequest
 import br.com.zup.edu.KeyManagerGrpcServiceGrpc
 import br.com.zup.edu.dto.ChavePixDTO
@@ -61,6 +62,19 @@ class ChavePixController(
 
         val response = grpcClient.consultaChavePixKeyManager(request)
 
+
+        return HttpResponse.ok(response.toDTO())
+
+    }
+
+    @Get
+    fun listaTodasChaves(identificador: String): HttpResponse<Any> {
+
+        val request = ClienteRequest.newBuilder()
+            .setIdentificador(identificador)
+            .build()
+
+        val response = grpcClient.listaTodasChaves(request)
 
         return HttpResponse.ok(response.toDTO())
 
